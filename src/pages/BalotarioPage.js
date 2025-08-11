@@ -1,11 +1,10 @@
 // src/pages/BalotarioPage.js
 
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useTimer } from '../context/TimerContext';
 import balotarioService from '../services/BalotarioService';
 import Spinner from '../components/Spinner';
-import Alert from '../components/Alert';
 import { useQueryClient } from '@tanstack/react-query';
 
 const competencyMap = {
