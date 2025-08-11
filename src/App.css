@@ -1,0 +1,779 @@
+/* src/App.css */
+
+/* === ESTILOS GLOBALES === */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5; /* Un gris claro para el fondo */
+    color: #1d2129;
+}
+
+/* === CONTENEDOR PRINCIPAL === */
+.App {
+    max-width: 900px;
+    margin: 40px auto; /* Centra el contenido y le da espacio arriba/abajo */
+    padding: 20px 40px;
+    background-color: #ffffff;
+    border: 1px solid #dddfe2;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* === TÍTULOS === */
+h1, h2 {
+    color: #1877f2; /* Azul tipo Facebook/LinkedIn */
+    border-bottom: 2px solid #e7f3ff;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* === FORMULARIOS (LOGIN Y REGISTRO) === */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre los elementos del formulario */
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccd0d5;
+    border-radius: 6px;
+    outline-color: #1877f2; /* Cambia el color del borde al hacer clic */
+}
+
+form button {
+    background-color: #1877f2;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+form button:hover {
+    background-color: #166fe5;
+}
+
+/* === BALOTARIO Y BLOQUES DE PREGUNTAS === */
+.question-block {
+    margin-bottom: 25px;
+    padding: 20px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background-color: #f7faff;
+}
+
+.question-title {
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+ul.options-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.options-list li {
+    margin-bottom: 8px;
+}
+
+ul.options-list li label {
+    display: block;
+    padding: 12px;
+    background-color: #fff;
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+ul.options-list li label:hover {
+    background-color: #f0f2f5;
+    border-color: #1877f2;
+}
+
+/* Estilo para la opción seleccionada */
+ul.options-list li input[type="radio"]:checked + label {
+    background-color: #e7f3ff;
+    border-color: #1877f2;
+    font-weight: 600;
+}
+/* Ocultamos el radio button original */
+ul.options-list li input[type="radio"] {
+    display: none;
+}
+
+
+/* === DASHBOARD Y RESULTADOS === */
+.dashboard-summary p {
+    font-size: 1.2em;
+    line-height: 1.4;
+    border-left: 4px solid #1877f2;
+    padding-left: 15px;
+    background-color: #f0f2f5;
+    padding: 10px 15px;
+    border-radius: 4px;
+}
+
+.history-list {
+    list-style: none;
+    padding: 0;
+}
+
+.history-list li {
+    background-color: #f7faff;
+    padding: 10px;
+    margin-bottom: 8px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+}
+
+/* src/App.css */
+
+/* === ESTILOS PARA LA NUEVA SECCIÓN "MIS RESULTADOS" === */
+
+.history-table {
+    margin-top: 20px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden; /* Para que los bordes redondeados se apliquen a las filas */
+}
+
+.history-header, .history-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr; /* 4 columnas con tamaño flexible */
+    gap: 10px;
+    padding: 15px;
+    align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.history-header {
+    background-color: #f8fafc;
+    font-weight: bold;
+    color: #475569;
+}
+
+.history-row:last-child {
+    border-bottom: none;
+}
+
+.history-row div {
+    text-align: center;
+}
+.history-row div:first-child {
+    text-align: left; /* Alineamos el título a la izquierda */
+}
+
+/* Estilo para un botón más pequeño */
+.small-button {
+    background-color: #f1f5f9;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.small-button:hover {
+    background-color: #e2e8f0;
+    color: #1e293b;
+}
+
+/* Responsividad para móviles */
+@media (max-width: 768px) {
+    .history-header {
+        display: none; /* Ocultamos las cabeceras en móvil */
+    }
+
+    .history-row {
+        grid-template-columns: 1fr; /* Cada celda ocupa una fila completa */
+        gap: 5px;
+        text-align: left;
+        padding-bottom: 20px;
+    }
+
+    .history-row div {
+        text-align: left;
+        padding: 2px 0;
+    }
+    
+    /* Usamos pseudo-elementos para añadir las etiquetas en móvil */
+    .history-row div:nth-child(1)::before { content: 'Balotario: '; font-weight: bold; }
+    .history-row div:nth-child(2)::before { content: 'Fecha: '; font-weight: bold; }
+    .history-row div:nth-child(3)::before { content: 'Puntaje: '; font-weight: bold; }
+
+    .history-row div:nth-child(4) {
+        margin-top: 10px;
+    }
+}
+
+/* src/App.css */
+
+/* === ESTILOS PARA EL PANEL DE ADMINISTRACIÓN (FORMULARIOS) === */
+
+.admin-form {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 1rem;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #475569;
+    font-weight: 500;
+}
+
+.form-section-title {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 1.5rem;
+    color: #1e40af;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #334155;
+    font-size: 0.9em;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 1em;
+    box-sizing: border-box; /* Asegura que el padding no desborde */
+}
+
+.form-group.form-option {
+    flex-direction: row;
+    align-items: center;
+}
+.form-group.form-option label {
+    margin-bottom: 0;
+    margin-right: 10px;
+    width: 80px; /* Ancho fijo para las etiquetas de opción */
+}
+
+.form-actions {
+    margin-top: 2rem;
+    text-align: right;
+}
+
+/* Para la tabla en AdminDashboard (Ajuste adicional) */
+.history-row div:last-child {
+    font-size: 0.9em;
+}
+
+/* === ESTILOS PARA EL NAVBAR === */
+.navbar {
+    background: #1877f2;
+    color: #fff;
+    padding: 0.75rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.navbar-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+.nav-link:hover {
+    opacity: 0.8;
+}
+
+.admin-link {
+    font-weight: bold;
+    background-color: rgba(255,255,255,0.1);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.logout-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit; /* Hereda la fuente del body */
+    font-size: 1em; /* Hereda el tamaño de fuente */
+}
+
+/* === ESTILOS PARA FORMULARIOS DE ADMIN === */
+.admin-form {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 1rem;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #475569;
+    font-weight: 500;
+}
+
+.form-section-title {
+    font-size: 1.2em;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 1.5rem;
+    color: #1e40af;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #334155;
+    font-size: 0.9em;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 1em;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.form-group.form-option {
+    flex-direction: row;
+    align-items: center;
+}
+
+.form-group.form-option label {
+    margin-bottom: 0;
+    margin-right: 10px;
+    width: 80px;
+}
+.form-group.form-option input {
+    flex: 1;
+}
+
+.form-actions {
+    margin-top: 2rem;
+    text-align: right;
+}
+
+/* Añade esto al final de src/App.css */
+
+.admin-row {
+    grid-template-columns: 3fr 1fr; /* 2 columnas para el dashboard de admin */
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column; /* Apila los botones verticalmente */
+    gap: 10px; /* Espacio entre botones */
+    align-items: center;
+}
+
+.small-button-danger {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+    width: 150px; /* Ancho fijo para alineación */
+    text-align: center;
+}
+
+.small-button-danger:hover {
+    background-color: #fecaca;
+    color: #991b1b;
+}
+
+@media (max-width: 768px) {
+    .admin-row {
+        grid-template-columns: 1fr; /* Vuelve a una columna en móviles */
+    }
+
+    .action-buttons {
+        flex-direction: row; /* Botones en fila en móviles */
+        justify-content: flex-start;
+        flex-wrap: wrap; /* Permite que los botones pasen a la siguiente línea */
+    }
+}
+
+/* Añade esto al final de src/App.css */
+
+.chart-container {
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+.page-actions {
+    display: block;
+    text-align: center;
+    margin: 30px 0;
+}
+
+.centered-message {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+/* Mejora para los links en botones pequeños */
+.small-button {
+    display: inline-block; /* Asegura que el padding se aplique bien */
+    text-decoration: none; /* Quita el subrayado del link */
+}
+
+/* Añade esto al final de src/App.css */
+
+/* === ESTILOS PARA LAS PÁGINAS DE AUTENTICACIÓN (LOGIN/REGISTER) === */
+.auth-container {
+    max-width: 450px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.auth-container h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.auth-container .form-group {
+    margin-bottom: 1rem;
+}
+.auth-container .form-group:last-of-type {
+    margin-bottom: 1.5rem;
+}
+
+.auth-switch-link {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9em;
+}
+
+.social-login-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 2rem 0;
+    color: #6c757d;
+}
+
+.divider-line {
+    flex-grow: 1;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.divider-text {
+    padding: 0 10px;
+    font-size: 0.9em;
+}
+
+.social-login-container {
+    display: flex;
+    justify-content: center;
+}
+
+/* Clase para deshabilitar visualmente un contenedor */
+.social-login-container.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* === ESTILOS PARA EL DASHBOARD DE USUARIO (/inicio) === */
+
+.welcome-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+.welcome-header h1 {
+    color: #1e3a8a; /* Un azul más oscuro */
+    margin-bottom: 0.5rem;
+}
+.welcome-header p {
+    font-size: 1.1rem;
+    color: #475569;
+}
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.dashboard-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.dashboard-card h2 {
+    margin-top: 0;
+    color: #1877f2;
+    font-size: 1.25rem;
+    border-bottom: none;
+}
+
+.dashboard-card p {
+    color: #475569;
+    font-size: 0.95em;
+}
+
+/* Añade esto al final de src/App.css */
+
+/* === ESTILO PARA EL CONTADOR EN EL NAVBAR === */
+.navbar-links .timer {
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente para destacar */
+    padding: 6px 14px;
+    border-radius: 6px;
+    margin: 0 15px;
+    font-family: 'Courier New', Courier, monospace; /* Fuente monoespaciada para que los números no "salten" */
+    font-size: 1.1em;
+}
+
+/* En App.css */
+.timer-display {
+    position: fixed; /* Lo fija en la pantalla */
+    top: 20px;
+    right: 250px; /* Ajusta este valor para posicionarlo horizontalmente */
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1001; /* Encima del contenido, debajo de posibles modales */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2em;
+}
+
+/* Estilo para cuando queda poco tiempo */
+.timer-display.warning {
+    background-color: #fffbe6;
+    color: #b45309;
+    border-color: #fcd34d;
+}
+
+/* En src/App.css */
+.timer-display {
+    position: fixed; /* Lo saca del flujo normal y lo fija en la pantalla */
+    top: 90px; /* Distancia desde la parte superior */
+    right: 40px; /* Distancia desde la derecha */
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    font-family: 'Courier New', monospace;
+    font-size: 1.2em;
+    min-width: 240px; /* Ancho mínimo para que se vea bien */
+    text-align: center;
+}
+
+/* Añade esto a App.css */
+.history-container {
+    margin-top: 2rem;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.result-card {
+    background-color: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.result-card-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.result-card-header h3 {
+    margin: 0;
+    color: #1e3a8a;
+}
+.result-card-header span {
+    font-size: 0.85em;
+    color: #64748b;
+}
+
+.result-card-body {
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+.result-card-body div {
+    display: flex;
+    flex-direction: column;
+}
+.result-card-body span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1e293b;
+}
+
+
+.result-card-footer {
+    padding: 1rem 1.5rem;
+    background-color: #f8fafc;
+    text-align: right;
+    border-top: 1px solid #e2e8f0;
+}
+.button-primary {
+    background-color: #1877f2;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Estilos para las competencias en el balotario */
+
+.competency-group {
+    margin-bottom: 2.5rem; /* Espacio entre cada competencia */
+    padding: 1.5rem;
+    border: 1px solid #dee2e6;
+    border-radius: 12px;
+    background-color: #ffffff;
+}
+
+.competency-title {
+    color: #1e3a8a;
+    border-bottom: 2px solid #1877f2;
+    padding-bottom: 0.8rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.5em;
+}
+
+/* Estilos actualizados para la página del balotario */
+.competency-section {
+    margin-bottom: 2.5rem;
+}
+
+/* Cambiamos el nombre de .competency-group a .competency-section para claridad */
+.competency-title {
+    color: #1e3a8a;
+    border-bottom: 2px solid #1877f2;
+    padding-bottom: 0.8rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.5em;
+}
+
+/* Nueva clase para la etiqueta de categoría */
+.question-category-tag {
+    margin-top: 1rem;
+    padding: 5px 10px;
+    background-color: #f1f5f9;
+    border-radius: 4px;
+    font-size: 0.8em;
+    color: #64748b;
+    display: inline-block; /* Para que se ajuste al texto */
+}
