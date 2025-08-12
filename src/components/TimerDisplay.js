@@ -3,7 +3,7 @@ import React from 'react';
 import { useTimer } from '../context/TimerContext';
 
 const TimerDisplay = () => {
-    const { seconds, isActive } = useTimer();
+    const { secondsLeft, isActive } = useTimer();
     
     const formatTime = (totalSeconds) => {
         const hours = Math.floor(totalSeconds / 3600).toString().padStart(2, '0');
@@ -13,15 +13,15 @@ const TimerDisplay = () => {
     };
     
     // Si el timer no está activo o el tiempo es cero, no se renderiza nada
-    if (!isActive || seconds <= 0) {
+    if (!isActive || secondsLeft <= 0) {
         return null; 
     }
 
-    const timerClass = `timer-display ${seconds < 60 * 5 ? 'warning' : ''}`;
+    const timerClass = `timer-display ${secondsLeft < 60 * 5 ? 'warning' : ''}`;
     
     return (
         <div className={timerClass}>
-            <strong>Tiempo Restante:</strong> {formatTime(seconds)}
+            <strong>Tiempo Restante:</strong> {formatTime(secondsLeft)}
         </div>
     );
 };

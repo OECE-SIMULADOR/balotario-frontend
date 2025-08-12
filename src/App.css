@@ -817,3 +817,19 @@ ul.options-list li input[type="radio"] {
     .form-grid {
         grid-template-columns: 1fr; /* Fuerza a una sola columna */
     }
+
+    /* Dentro de @media (max-width: 768px) { ... } en App.css */
+
+    /* --- Estilos del Temporizador para Móvil --- */
+    .timer-display {
+        /* Lo movemos a la parte superior */
+        top: 60px; /* Un poco por debajo del navbar (ajusta si es necesario) */
+        left: 50%;
+        transform: translateX(-50%); /* Técnica para centrarlo perfectamente */
+        
+        /* Ajustamos el tamaño para que sea más compacto */
+        padding: 8px 16px;
+        font-size: 1em;
+        min-width: auto; /* Quitamos el ancho mínimo */
+        right: auto; /* Reseteamos la posición derecha */
+    }
