@@ -777,3 +777,43 @@ ul.options-list li input[type="radio"] {
     color: #64748b;
     display: inline-block; /* Para que se ajuste al texto */
 }
+
+/* --- >>>>> MEDIA QUERIES PARA RESPONSIVIDAD <<< --- */
+/* Estilos que se aplican solo si el ancho de la pantalla es 768px o menos */
+
+@media (max-width: 768px) {
+    
+    /* Hacemos el contenedor principal más ajustado a la pantalla */
+    .App {
+        padding: 10px 15px;
+        margin: 20px 10px;
+    }
+    
+    /* --- Estilos del Navbar para Móvil --- */
+    .navbar {
+        flex-direction: column; /* Apila el logo y los enlaces */
+        padding: 1rem;
+        gap: 0.5rem;
+    }
+    
+    .navbar-links {
+        justify-content: center;
+        flex-wrap: wrap; /* Permite que los enlaces pasen a la siguiente línea si no caben */
+    }
+    
+    .nav-link {
+        font-size: 0.9em;
+        margin: 0 8px;
+    }
+}
+
+/* Continúa dentro del bloque @media (max-width: 768px) {} */
+
+    /* --- Estilos de Formularios para Móvil --- */
+    .auth-container, .admin-form {
+        padding: 1.5rem;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr; /* Fuerza a una sola columna */
+    }
